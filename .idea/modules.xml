@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/RUSTBOT.iml" filepath="$PROJECT_DIR$/.idea/RUSTBOT.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../RustPlusDiscordBot/.idea/RustPlusDiscordBot.iml" filepath="$PROJECT_DIR$/../RustPlusDiscordBot/.idea/RustPlusDiscordBot.iml" />
     </modules>
   </component>
 </project>
