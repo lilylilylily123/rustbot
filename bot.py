@@ -2,7 +2,7 @@ import os
 import interactions
 
 from dotenv import load_dotenv
-
+#importing
 load_dotenv()
 TOKEN = os.getenv('DISCORD_TOKEN')
 bot = interactions.Client(token=TOKEN)
