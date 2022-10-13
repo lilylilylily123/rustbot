@@ -4,6 +4,7 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/RUSTBOT.iml" filepath="$PROJECT_DIR$/.idea/RUSTBOT.iml" />
       <module fileurl="file://$PROJECT_DIR$/../RustPlusDiscordBot/.idea/RustPlusDiscordBot.iml" filepath="$PROJECT_DIR$/../RustPlusDiscordBot/.idea/RustPlusDiscordBot.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../rustdiscordbot/.idea/rustdiscordbot.iml" filepath="$PROJECT_DIR$/../rustdiscordbot/.idea/rustdiscordbot.iml" />
     </modules>
   </component>
 </project>

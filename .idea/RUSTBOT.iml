@@ -7,5 +7,6 @@
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="module" module-name="RustPlusDiscordBot" />
+    <orderEntry type="module" module-name="rustdiscordbot" />
   </component>
 </module>
