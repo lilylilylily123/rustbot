@@ -26,7 +26,8 @@ async def on_message(message):
        await message.channel.send('is high!!!!')
 @bot.listen()
 async def on_member_join(member):
-    await member.send(f"Welcome ``{member}`` to ``{member.guild.name}``!")
+    channel = bot.get_channel(1018219976521429043)
+    await channel.send(f"Welcome {member.mention} to ``{member.guild}``!")
 @bot.slash_command()
 async def ping(ctx):
     await ctx.respond(f"🏓 Pong ({round(bot.latency * 1000)}ms)")
