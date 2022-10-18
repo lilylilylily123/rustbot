@@ -108,5 +108,4 @@ async def server(ctx):
     await ctx.respond(file=file, embed=embed)
     os.remove('map.png')
 
-
 bot.run(TOKEN)
