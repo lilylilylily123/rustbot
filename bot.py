@@ -1,21 +1,46 @@
 import os
-from typing import List
 import random
+import sqlite3
+
 import discord
 from discord.ext import commands
 from discord.ext import tasks
 from rustplus import RustSocket
 
+con = sqlite3.connect("rustcreds.db")
+cur = con.cursor()
+# cur.execute("CREATE TABLE creds(ip, port, steam, rust)")
+
+con.commit()
 cooldown = []
 intents = discord.Intents.all()
 
 bot = discord.Bot(intents=intents)
 from dotenv import load_dotenv
 
-socket = RustSocket("209.237.141.22", "28019", 76561198815346499, -111167879)
-
 load_dotenv()
 TOKEN = os.getenv('DISCORD_TOKEN')
+
+
+@bot.slash_command()
+async def setcredentials(ctx):
+    await ctx.respond(f'Please enter your name.')
+    username = await bot.wait_for('message')
+    cur.execute(f"CREATE TABLE IF NOT EXISTS {username.content}(ip, port, steam, rust)")
+    await ctx.send(f'Please enter your rust server IP.')
+    ip = await bot.wait_for('message')
+    await ctx.send(f'Please enter your rust server port.')
+    port = await bot.wait_for('message')
+    await ctx.send(f'Please enter your steam token..')
+    steam = await bot.wait_for('message')
+    await ctx.send(f'Please enter your rust server token.')
+    rust = await bot.wait_for('message')
+    cur.execute(f"INSERT INTO {username.content}(ip, port, steam, rust) VALUES (?, ?, ?, ?)",
+                (ip.content, port.content, steam.content, rust.content))
+    con.commit()
+
+
+socket = RustSocket("209.237.141.22", "28019", 76561198815346499, -111167879)
 
 
 @bot.event
@@ -23,7 +48,9 @@ async def on_ready():
     change_status.start()
     print(f"Connected as {bot.user}")
 
+
 status = ['Rust', 'with your mother', 'Rust with Storm']
+
 
 @tasks.loop(seconds=10)
 async def change_status():
@@ -39,7 +66,6 @@ async def on_message(message):
         await message.channel.send('is lesbian!!!!')
     if message.content.startswith('gio'):
         await message.channel.send('is high!!!!')
-
 
 @bot.listen()
 async def on_member_join(member):
